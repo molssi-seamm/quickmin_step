@@ -1,0 +1,213 @@
+This is an initial library of BibTex references for the quickmin_step plug-in for SEAMM,
+generated automatically by the cookiecutter. You may wish to edit the first entry to correct some
+of the information.
+
+Add other references to the end of the file and add code in the plug-in to cite the references as
+appropriate. This is done with code like this:
+
+        self.references.cite(
+            raw=self._bibliography['doi:10.1002/jcc.21224'],
+            alias='packmol',
+            module='packmol_step',
+            level=1,
+            note='The principle PACKMOL citation.'
+        )
+
+which is typically in the run() method of the plug-in.
+
+The base node class in SEAMM automatically reads this list of references into a dictionary in
+self._bibliography with the key being the key of the BibTex entry -- usually the name on the
+first line of the entry after the 'article' or 'misc' (for software) keyword.
+
+See the documentation for the Reference Handler for the other arguments to cite().
+
+# End of initial comments #
+
+# This is the citation for this plug-in, generated and used automatically.
+# You might need to edit the author, address, etc. The month, year and version fields
+# are automatically filled in with information about current version of the plug-in.
+# This is handled in seamm/nody.py, the run() method.
+
+@Misc{quickmin_step,
+	author = {Paul Saxe},
+	title = {Quickmin plug-in for SEAMM},
+	month = {$month},
+	year = {$year},
+	organization = {molssi-seamm},
+	url = {https://github.com/molssi-seamm/quickmin_step },
+	address = {USA},
+	version = {$version}
+}
+
+@Article{openbabel,
+    author={O'Boyle, Noel M.
+    and Banck, Michael
+    and James, Craig A.
+    and Morley, Chris
+    and Vandermeersch, Tim
+    and Hutchison, Geoffrey R.},
+    title={Open Babel: An open chemical toolbox},
+    journal={Journal of Cheminformatics},
+    year={2011},
+    month={Oct},
+    day={07},
+    volume={3},
+    number={1},
+    pages={33},
+    issn={1758-2946},
+    doi={10.1186/1758-2946-3-33},
+    url={https://doi.org/10.1186/1758-2946-3-33}
+}
+
+@Misc{obabel,
+    title = {The Open Babel Package},
+    month = {$month},
+    year = {$year},
+    organization = {Open Babel},
+    url = {http://openbabel.org},
+    version = {$version}
+}
+                  
+@Article{bs93,
+ author = {B. L. Bush and R. P. Sheridan},
+ title = {{PATTY}: {A} {P}rogrammable {A}tom {T}yper and {L}anguage for {A}utomatic 
+          {C}lassification of {A}toms in {M}olecular {D}atabases.},
+ journal = {J. Chem. Inf. Comput. Sci.},
+ year = {1993},
+ volume = {33},
+ pages = {756-762},
+}
+                  
+@article{Ghemical,
+    author = {Hassinen, Tommi and Peräkylä, Mikael},
+    title = {New energy terms for reduced protein models implemented in an off-lattice force field},
+    journal = {Journal of Computational Chemistry},
+    volume = {22},
+    number = {12},
+    pages = {1229-1242},
+    keywords = {proteins, reduced models, protein structure prediction, force fields, molecular dynamics},
+    doi = {https://doi.org/10.1002/jcc.1080},
+    url = {https://onlinelibrary.wiley.com/doi/abs/10.1002/jcc.1080},
+    eprint = {https://onlinelibrary.wiley.com/doi/pdf/10.1002/jcc.1080},
+    year = {2001}
+}
+
+@article{MMFF94-1,
+    author = {Halgren, Thomas A.},
+    title = {Merck molecular force field. I. Basis, form, scope, parameterization, and performance of MMFF94},
+    journal = {Journal of Computational Chemistry},
+    volume = {17},
+    number = {5-6},
+    pages = {490-519},
+    doi = {https://doi.org/10.1002/(SICI)1096-987X(199604)17:5/6<490::AID-JCC1>3.0.CO;2-P},
+    url = {https://onlinelibrary.wiley.com/doi/abs/10.1002/%28SICI%291096-987X%28199604%2917%3A5/6%3C490%3A%3AAID-JCC1%3E3.0.CO%3B2-P},
+    eprint = {https://onlinelibrary.wiley.com/doi/pdf/10.1002/%28SICI%291096-987X%28199604%2917%3A5/6%3C490%3A%3AAID-JCC1%3E3.0.CO%3B2-P},
+    year = {1996}
+}
+
+@article{MMFF94-2,
+    author = {Halgren, Thomas A.},
+    title = {Merck molecular force field. II. MMFF94 van der Waals and electrostatic parameters for intermolecular interactions},
+    journal = {Journal of Computational Chemistry},
+    volume = {17},
+    number = {5-6},
+    pages = {520-552},
+    doi = {https://doi.org/10.1002/(SICI)1096-987X(199604)17:5/6<520::AID-JCC2>3.0.CO;2-W},
+    url = {https://onlinelibrary.wiley.com/doi/abs/10.1002/%28SICI%291096-987X%28199604%2917%3A5/6%3C520%3A%3AAID-JCC2%3E3.0.CO%3B2-W},
+    eprint = {https://onlinelibrary.wiley.com/doi/pdf/10.1002/%28SICI%291096-987X%28199604%2917%3A5/6%3C520%3A%3AAID-JCC2%3E3.0.CO%3B2-W},
+    year = {1996}
+}
+
+@article{MMFF94-3,
+    author = {Halgren, Thomas A.},
+    title = {Merck molecular force field. III. Molecular geometries and vibrational frequencies for MMFF94},
+    journal = {Journal of Computational Chemistry},
+    volume = {17},
+    number = {5-6},
+    pages = {553-586},
+    doi = {https://doi.org/10.1002/(SICI)1096-987X(199604)17:5/6<553::AID-JCC3>3.0.CO;2-T},
+    url = {https://onlinelibrary.wiley.com/doi/abs/10.1002/%28SICI%291096-987X%28199604%2917%3A5/6%3C553%3A%3AAID-JCC3%3E3.0.CO%3B2-T},
+    eprint = {https://onlinelibrary.wiley.com/doi/pdf/10.1002/%28SICI%291096-987X%28199604%2917%3A5/6%3C553%3A%3AAID-JCC3%3E3.0.CO%3B2-T},
+    year = {1996}
+}
+
+@article{MMFF94-4,
+    author = {Halgren, Thomas A. and Nachbar, Robert B.},
+    title = {Merck molecular force field. IV. conformational energies and geometries for MMFF94},
+    journal = {Journal of Computational Chemistry},
+    volume = {17},
+    number = {5-6},
+    pages = {587-615},
+    doi = {https://doi.org/10.1002/(SICI)1096-987X(199604)17:5/6<587::AID-JCC4>3.0.CO;2-Q},
+    url = {https://onlinelibrary.wiley.com/doi/abs/10.1002/%28SICI%291096-987X%28199604%2917%3A5/6%3C587%3A%3AAID-JCC4%3E3.0.CO%3B2-Q},
+    eprint = {https://onlinelibrary.wiley.com/doi/pdf/10.1002/%28SICI%291096-987X%28199604%2917%3A5/6%3C587%3A%3AAID-JCC4%3E3.0.CO%3B2-Q},
+    year = {1996}
+}
+
+@article{MMFF94-5,
+    author = {Halgren, Thomas A.},
+    title = {Merck molecular force field. V. Extension of MMFF94 using experimental data, additional computational data, and empirical rules},
+    journal = {Journal of Computational Chemistry},
+    volume = {17},
+    number = {5-6},
+    pages = {616-641},
+    doi = {https://doi.org/10.1002/(SICI)1096-987X(199604)17:5/6<616::AID-JCC5>3.0.CO;2-X},
+    url = {https://onlinelibrary.wiley.com/doi/abs/10.1002/%28SICI%291096-987X%28199604%2917%3A5/6%3C616%3A%3AAID-JCC5%3E3.0.CO%3B2-X},
+    eprint = {https://onlinelibrary.wiley.com/doi/pdf/10.1002/%28SICI%291096-987X%28199604%2917%3A5/6%3C616%3A%3AAID-JCC5%3E3.0.CO%3B2-X},
+    year = {1996}
+}
+
+@article{MMFF94-6,
+    author = {Halgren, Thomas A.},
+    title = {MMFF VII. Characterization of MMFF94, MMFF94s, and other widely available force fields for conformational energies and for intermolecular-interaction energies and geometries},
+    journal = {Journal of Computational Chemistry},
+    volume = {20},
+    number = {7},
+    pages = {730-748},
+    keywords = {force field, conformational energy, intermolecular interactions, hydrogen bonding, scaled quantum mechanics},
+    doi = {https://doi.org/10.1002/(SICI)1096-987X(199905)20:7<730::AID-JCC8>3.0.CO;2-T},
+    url = {https://onlinelibrary.wiley.com/doi/abs/10.1002/%28SICI%291096-987X%28199905%2920%3A7%3C730%3A%3AAID-JCC8%3E3.0.CO%3B2-T},
+    eprint = {https://onlinelibrary.wiley.com/doi/pdf/10.1002/%28SICI%291096-987X%28199905%2920%3A7%3C730%3A%3AAID-JCC8%3E3.0.CO%3B2-T},
+    year = {1999}
+}
+
+@article{MMFF94s,
+    author = {Halgren, Thomas A.},
+    title = {MMFF VI. MMFF94s option for energy minimization studies},
+    journal = {Journal of Computational Chemistry},
+    volume = {20},
+    number = {7},
+    pages = {720-729},
+    keywords = {force field, base pair, delocalized trigonal nitrogen, puckering},
+    doi = {https://doi.org/10.1002/(SICI)1096-987X(199905)20:7<720::AID-JCC7>3.0.CO;2-X},
+    url = {https://onlinelibrary.wiley.com/doi/abs/10.1002/%28SICI%291096-987X%28199905%2920%3A7%3C720%3A%3AAID-JCC7%3E3.0.CO%3B2-X},
+    eprint = {https://onlinelibrary.wiley.com/doi/pdf/10.1002/%28SICI%291096-987X%28199905%2920%3A7%3C720%3A%3AAID-JCC7%3E3.0.CO%3B2-X},
+    year = {1999}
+}
+
+@article{UFF,
+    author = {Rappe, A. K. and Casewit, C. J. and Colwell, K. S. and Goddard, W. A. III and Skiff, W. M.},
+    title = {UFF, a full periodic table force field for molecular mechanics and molecular dynamics simulations},
+    journal = {Journal of the American Chemical Society},
+    volume = {114},
+    number = {25},
+    pages = {10024-10035},
+    year = {1992},
+    doi = {10.1021/ja00051a040},
+    URL = {https://doi.org/10.1021/ja00051a040},
+    eprint = {https://doi.org/10.1021/ja00051a040}
+}
+
+@article{GAFF,
+    author = {Wang, Junmei and Wolf, Romain M. and Caldwell, James W. and Kollman, Peter A. and Case, David A.},
+    title = {Development and testing of a general amber force field},
+    journal = {Journal of Computational Chemistry},
+    volume = {25},
+    number = {9},
+    pages = {1157-1174},
+    keywords = {general AMBER force field, additive force field, force field parameterization, restrained electrostatic potential (RESP)},
+    doi = {https://doi.org/10.1002/jcc.20035},
+    url = {https://onlinelibrary.wiley.com/doi/abs/10.1002/jcc.20035},
+    eprint = {https://onlinelibrary.wiley.com/doi/pdf/10.1002/jcc.20035},
+    year = {2004}
+}

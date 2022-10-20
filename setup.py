@@ -63,9 +63,9 @@ setup(
     # prevent the .egg from being made
     zip_safe=True,
 
-    keywords=['SEAMM', 'plug-in', 'flowchart'],
+    keywords=['SEAMM', 'SEAMMplugin', 'flowchart'],
     classifiers=[
-        'Development Status :: 2 - Pre-Alpha',
+        'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Science/Research',
         'Topic :: Scientific/Engineering :: Chemistry',
         'Topic :: Scientific/Engineering :: Physics',

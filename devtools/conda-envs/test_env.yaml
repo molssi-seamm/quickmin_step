@@ -9,7 +9,10 @@ dependencies:
   - pip
 
   # SEAMM
+  - openbabel
   - seamm
+  - seamm-util
+  - seamm-widgets
 
   # Testing
   - black

@@ -3,8 +3,9 @@ name: BranchCI
 on:
   push:
     branches-ignore:
-      - 'main'
+      - "main"
 
+jobs:
   branch-ci:
     name: Branch CI
     uses: molssi-seamm/devops/.github/workflows/BranchCI.yaml@main

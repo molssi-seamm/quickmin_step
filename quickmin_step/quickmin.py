@@ -200,10 +200,44 @@ class QuickMin(seamm.Node):
         str
             A description of the current step.
         """
-        if not P:
+        if P is None:
             P = self.parameters.values_to_dict()
 
-        text = "Using a maximum of {n_steps} steps of minimization using {forcefield}."
+        n_steps = P["n_steps"]
+        forcefield = P["forcefield"]
+        if forcefield == "best available":
+            ff_name = "the best available forcefield"
+        else:
+            ff_name = forcefield.split()[0]
+
+        text = f"Minimizing the structure with {ff_name}, with a maximum of "
+        text += f"{n_steps} steps."
+
+        if "Create" in P["structure handling"]:
+            text += " The optimized structure will be put in a new configuration "
+        else:
+            text += " The optimized structure will overwrite the current configuration "
+
+        confname = P["configuration name"]
+        if confname == "use SMILES string":
+            text += "using SMILES as its name."
+        elif confname == "use Canonical SMILES string":
+            text += "using canonical SMILES as its name."
+        elif confname == "keep current name":
+            text += "keeping the current name."
+        elif confname == "optimized with <Forcefield>":
+            if forcefield == "best available":
+                text += (
+                    "with 'optimized with <the name of the forcefield used>' as its"
+                    " name."
+                )
+            else:
+                text += f"with 'optimized with {ff_name}' as its name."
+        elif confname == "use configuration number":
+            text += "using the index of the configuration (1, 2, ...) as its name."
+        else:
+            confname = confname.replace("<Forcefield>", ff_name)
+            text += f"with '{confname}' as its name."
 
         return self.header + "\n" + __(text, **P, indent=4 * " ").__str__()
 
@@ -299,7 +333,7 @@ class QuickMin(seamm.Node):
         directory.mkdir(parents=True, exist_ok=True)
 
         # Get the current system and configuration (ignoring the system...)
-        _, configuration = self.get_system_configuration(None)
+        system, configuration = self.get_system_configuration(None)
 
         obmol = configuration.to_OBMol()
 
@@ -364,25 +398,52 @@ class QuickMin(seamm.Node):
         converged = "HAS CONVERGED" in lines[-1]
 
         if converged:
-            printer.normal(
-                __(
-                    f"The minimization converged in {n_iterations} steps to "
-                    f"{energy:.3f} {units}.",
-                    indent=4 * " ",
-                    wrap=True,
-                    dedent=False,
-                )
+            text = (
+                f"The minimization converged in {n_iterations} steps to "
+                f"{energy:.3f} {units}."
             )
         else:
-            printer.normal(
-                __(
-                    f"The minimization did not converge in {n_iterations} steps! "
-                    f"The final energy was {energy:.3f} {units}.",
-                    indent=4 * " ",
-                    wrap=True,
-                    dedent=False,
-                )
+            text = (
+                f"The minimization did not converge in {n_iterations} steps! "
+                f"The final energy was {energy:.3f} {units}."
             )
+
+        # Save the structure
+        if (
+            "structure handling" in P
+            and P["structure handling"] == "Create a new configuration"
+        ):
+            configuration = system.create_configuration(
+                periodicity=configuration.periodicity,
+                atomset=configuration.atomset,
+                bondset=configuration.bondset,
+                cell_id=configuration.cell_id,
+            )
+            text += " The final structure was saved in the new configuration "
+        else:
+            text += " The final structure replaced the original configuration "
+
+        configuration.from_OBMol(obmol)
+
+        # And the name of the configuration.
+        if "configuration name" in P:
+            if P["configuration name"] == "optimized with <Forcefield>":
+                configuration.name = f"optimized with {ff_name}"
+            elif P["configuration name"] == "keep current name":
+                pass
+            elif P["configuration name"] == "use SMILES string":
+                configuration.name = configuration.smiles
+            elif P["configuration name"] == "use Canonical SMILES string":
+                configuration.name = configuration.canonical_smiles
+            elif P["configuration name"] == "use configuration number":
+                configuration.name = str(configuration.n_configurations)
+
+        name = configuration.name
+        if len(name) > 30:
+            name = name[0:30] + "..."
+        text += f"named '{name}'."
+
+        printer.normal(__(text, indent=4 * " ", wrap=True, dedent=False))
 
         # Add the citation(s) for the forcefield
         if "MMFF94" in ff_name:

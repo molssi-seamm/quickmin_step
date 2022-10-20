@@ -169,7 +169,7 @@ class TkQuickMin(seamm.TkNode):
             row += 1
 
         # Align the labels
-        sw.align_labels(widgets)
+        sw.align_labels(widgets, sticky=tk.E)
 
     def right_click(self, event):
         """

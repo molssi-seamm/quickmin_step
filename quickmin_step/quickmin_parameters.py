@@ -90,7 +90,7 @@ class QuickMinParameters(seamm.Parameters):
                 "UFF -- Universal Force Field",
             ),
             "format_string": "",
-            "description": "Forcefield",
+            "description": "Forcefield:",
             "help_text": "The forcefield to use.",
         },
         "n_steps": {
@@ -101,6 +101,37 @@ class QuickMinParameters(seamm.Parameters):
             "format_string": "",
             "description": "Maximum steps:",
             "help_text": "The maximum number of steps to run.",
+        },
+        # Put in the configuration handling options needed
+        "structure handling": {
+            "default": "Create a new configuration",
+            "kind": "enum",
+            "default_units": "",
+            "enumeration": (
+                "Overwrite the current configuration",
+                "Create a new configuration",
+            ),
+            "format_string": "s",
+            "description": "Configuration handling:",
+            "help_text": (
+                "Whether to overwrite the current configuration, or create a new "
+                "configuration or system and configuration for the new structure"
+            ),
+        },
+        "configuration name": {
+            "default": "optimized with <Forcefield>",
+            "kind": "string",
+            "default_units": "",
+            "enumeration": (
+                "optimized with <Forcefield>",
+                "keep current name",
+                "use SMILES string",
+                "use Canonical SMILES string",
+                "use configuration number",
+            ),
+            "format_string": "s",
+            "description": "Configuration name:",
+            "help_text": "The name for the new configuration",
         },
     }
 

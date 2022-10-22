@@ -6,25 +6,29 @@ import quickmin_step
 class QuickMinStep(object):
     """Helper class needed for the stevedore integration.
 
-    This must provide a description() method that returns a dict containing a
-    description of this node, and create_node() and create_tk_node() methods
+    This must provide a `description()` method that returns a dict containing a
+    description of this node, and `create_node()` and `create_tk_node()` methods
     for creating the graphical and non-graphical nodes.
 
-    Attributes
-    ----------
-    my_description : {description, group, name}
-        A human-readable description of this step. It can be
-        several lines long, and needs to be clear to non-expert users.
-        It contains the following keys: description, group, name.
-    my_description["description"] : tuple
-        A description of the QuickMin step. It must be
-        clear to non-experts.
-    my_description["group"] : str
-        Which group in the menus to put this step. If the group does
-        not exist it will be created. Common groups are "Building",
-        "Calculations", "Control" and "Data".
-    my_description["name"] : str
-        The name of this step, to be displayed in the menus.
+    The dictionary for the description is the class variable just below these
+    comments. The fields are as follows:
+
+        my_description : {str, str}
+            A human-readable description of this step. It can be
+            several lines long, and needs to be clear to non-expert users.
+            It contains the following keys: description, group, name.
+
+        my_description["description"] : tuple
+            A description of the {{cookiecutter.step}} step. It must be
+            clear to non-experts.
+
+        my_description["group"] : str
+            Which group in the menus to put this step. If the group does
+            not exist it will be created. Common groups are "Building",
+            "Control", "Custom", "Data", and "Simulations".
+
+        my_description["name"] : str
+            The name of this step, to be displayed in the menus.
     """
 
     my_description = {
@@ -40,20 +44,16 @@ class QuickMinStep(object):
         """
         pass
 
-    def description(self):
-        """Return a description of what this extension does."""
-        return QuickMinStep.my_description
-
     def create_node(self, flowchart=None, **kwargs):
         """Create and return the new node object.
 
         Parameters
         ----------
-        flowchart: seamm.Node
+        flowchart : seamm.Node
             A non-graphical SEAMM node
 
-        **kwargs : keyworded arguments
-            Various keyworded arguments such as title, namespace or
+        **kwargs : keyword arguments
+            Various keyword arguments such as title, namespace or
             extension representing the title displayed in the flowchart,
             the namespace for the plugins of a subflowchart and
             the extension, respectively.
@@ -61,11 +61,6 @@ class QuickMinStep(object):
         Returns
         -------
         QuickMin
-
-        See Also
-        --------
-        QuickMin
-
         """
 
         return quickmin_step.QuickMin(flowchart=flowchart, **kwargs)
@@ -78,18 +73,23 @@ class QuickMinStep(object):
         canvas : tk.Canvas
             The Tk Canvas widget
 
-        **kwargs : keyworded arguments
-            Various keyworded arguments such as tk_flowchart, node, x, y, w, h
+        **kwargs : keyword arguments
+            Various keyword arguments such as tk_flowchart, node, x, y, w, h
             representing a graphical flowchart object, a non-graphical node for
             a step, and dimensions of the graphical node.
 
         Returns
         -------
         TkQuickMin
-
-        See Also
-        --------
-        TkQuickMin
         """
 
         return quickmin_step.TkQuickMin(canvas=canvas, **kwargs)
+
+    def description(self):
+        """Return a description of what this step does.
+
+        Returns
+        -------
+        description : dict(str, str)
+        """
+        return QuickMinStep.my_description

@@ -21,26 +21,40 @@ class QuickMinParameters(seamm.Parameters):
     You need to replace the "time" example below with one or more
     definitions of the control parameters for your plugin and application.
 
-    Attributes
-    ----------
-    parameters : {"kind", "default", "default_units", "enumeration",
-                  "format_string", description", help_text"}
+    Examples
+    --------
+    ::
+
+        parameters = {
+            "time": {
+                "default": 100.0,
+                "kind": "float",
+                "default_units": "ps",
+                "enumeration": tuple(),
+                "format_string": ".1f",
+                "description": "Simulation time:",
+                "help_text": ("The time to simulate in the dynamics run.")
+            },
+        }
+
+    parameters : {str: {str: str}}
         A dictionary containing the parameters for the current step.
         Each key of the dictionary is a dictionary that contains the
-        the following keys: kind, default, default_units, enumeration,
-        format_string, description and help text.
+        the following keys:
 
-    parameters["kind"]: custom
-        Specifies the kind of a variable. While the "kind" of a variable might
-        be a numeric value, it may still have enumerated custom values
-        meaningful to the user. For instance, if the parameter is
-        a convergence criterion for an optimizer, custom values like "normal",
-        "precise", etc, might be adequate. In addition, any
-        parameter can be set to a variable of expression, indicated by having
-        "$" as the first character in the field. For example, $OPTIMIZER_CONV.
+    parameters["default"] :
+        The default value of the parameter, used to reset it.
 
-    parameters["default"] : "integer" or "float" or "string" or "boolean" or
-        "enum" The default value of the parameter, used to reset it.
+    parameters["kind"] : enum()
+        Specifies the kind of a variable. One of  "integer", "float", "string",
+        "boolean", or "enum"
+
+        While the "kind" of a variable might be a numeric value, it may still have
+        enumerated custom values meaningful to the user. For instance, if the parameter
+        is a convergence criterion for an optimizer, custom values like "normal",
+        "precise", etc, might be adequate. In addition, any parameter can be set to a
+        variable of expression, indicated by having "$" as the first character in the
+        field. For example, $OPTIMIZER_CONV.
 
     parameters["default_units"] : str
         The default units, used for resetting the value.
@@ -54,27 +68,12 @@ class QuickMinParameters(seamm.Parameters):
     parameters["description"]: str
         A short string used as a prompt in the GUI.
 
-    parameters["help_text"]: tuple
+    parameters["help_text"]: str
         A longer string to display as help for the user.
 
     See Also
     --------
-    QuickMin, TkQuickMin, QuickMin
-    QuickMinParameters, QuickMinStep
-
-    Examples
-    --------
-    parameters = {
-        "time": {
-            "default": 100.0,
-            "kind": "float",
-            "default_units": "ps",
-            "enumeration": tuple(),
-            "format_string": ".1f",
-            "description": "Simulation time:",
-            "help_text": ("The time to simulate in the dynamics run.")
-        },
-    }
+    QuickMin, TkQuickMin, QuickMin, QuickMinParameters, QuickMinStep
     """
 
     parameters = {

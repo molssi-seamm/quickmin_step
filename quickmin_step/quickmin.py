@@ -10,6 +10,7 @@ import time
 
 import logging
 from pathlib import Path
+import pkg_resources
 import pprint  # noqa: F401
 import shutil
 import string
@@ -17,11 +18,18 @@ import subprocess
 
 from openbabel import openbabel
 
+import molsystem
 import quickmin_step
 import seamm
 from seamm_util import ureg, Q_  # noqa: F401
 import seamm_util.printing as printing
 from seamm_util.printing import FormattedText as __
+
+# Add this modules properties to the standard properties
+path = Path(pkg_resources.resource_filename(__name__, "data/"))
+csv_file = path / "properties.csv"
+if path.exists():
+    molsystem.add_properties_from_file(csv_file)
 
 if "OpenBabel_version" not in globals():
     OpenBabel_version = None
@@ -173,6 +181,7 @@ class QuickMin(seamm.Node):
             logger=logger,
         )  # yapf: disable
 
+        self._metadata = quickmin_step.metadata
         self.parameters = quickmin_step.QuickMinParameters()
 
     @property
@@ -388,6 +397,9 @@ class QuickMin(seamm.Node):
             path = Path(self.directory) / "min.out"
             path.write_text(out.capturedtext)
 
+        # Set the model chemistry to the forcefield name.
+        self._model = ff_name
+
         # Check for convergence
         lines = out.capturedtext.splitlines()
         tmp = lines[-2].split()
@@ -396,6 +408,13 @@ class QuickMin(seamm.Node):
         else:
             n_iterations = "unknown"
         converged = "HAS CONVERGED" in lines[-1]
+
+        # Set up the results data
+        data = {}
+        if units == "kJ/mol":
+            data["total energy"] = energy
+        else:
+            data["total energy"] = Q_(energy, units).m_as("kJ/mol")
 
         if converged:
             text = (
@@ -443,7 +462,8 @@ class QuickMin(seamm.Node):
             name = name[0:30] + "..."
         text += f"named '{name}'."
 
-        printer.normal(__(text, indent=4 * " ", wrap=True, dedent=False))
+        printer.normal(__(text, indent=self.indent))
+        printer.normal("")
 
         # Add the citation(s) for the forcefield
         if "MMFF94" in ff_name:
@@ -481,31 +501,14 @@ class QuickMin(seamm.Node):
                 note=f"The main {ff_name} citation.",
             )
 
-        # Analyze the results
-        # self.analyze()
+        # Put any requested results into variables or tables
+        self.store_results(
+            configuration=configuration,
+            data=data,
+        )
 
         # Add other citations here or in the appropriate place in the code.
         # Add the bibtex to data/references.bib, and add a self.reference.cite
         # similar to the above to actually add the citation to the references.
 
         return next_node
-
-    def analyze(self, indent="", **kwargs):
-        """Do any analysis of the output from this step.
-
-        Also print important results to the local step.out file using
-        "printer".
-
-        Parameters
-        ----------
-        indent: str
-            An extra indentation for the output
-        """
-        printer.normal(
-            __(
-                "This is a placeholder for the results from the QuickMin step",
-                indent=4 * " ",
-                wrap=True,
-                dedent=False,
-            )
-        )

@@ -1,0 +1,2 @@
+Property,Type,Units,Description,URL
+total energy#QuickMin#{model},float,kJ/mol,"The {model} energy.",

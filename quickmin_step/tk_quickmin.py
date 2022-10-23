@@ -117,12 +117,18 @@ class TkQuickMin(seamm.TkNode):
         """
 
         frame = super().create_dialog(title="QuickMin")
+
         # Shortcut for parameters
         P = self.node.parameters
 
         # Then create the widgets
         for key in P:
-            self[key] = P[key].widget(frame)
+            if key[0] != "_" and key not in (
+                "results",
+                "extra keywords",
+                "create tables",
+            ):
+                self[key] = P[key].widget(frame)
 
         # and lay them out
         self.reset_dialog()
@@ -164,12 +170,20 @@ class TkQuickMin(seamm.TkNode):
         row = 0
         widgets = []
         for key in P:
-            self[key].grid(row=row, column=0, sticky=tk.EW)
-            widgets.append(self[key])
-            row += 1
+            if key[0] != "_" and key not in (
+                "results",
+                "extra keywords",
+                "create tables",
+            ):
+                self[key].grid(row=row, column=0, sticky=tk.EW)
+                widgets.append(self[key])
+                row += 1
 
         # Align the labels
         sw.align_labels(widgets, sticky=tk.E)
+
+        # Setup the results if there are any
+        self.setup_results()
 
     def right_click(self, event):
         """
@@ -192,77 +206,3 @@ class TkQuickMin(seamm.TkNode):
         self.popup_menu.add_command(label="Edit..", command=self.edit)
 
         self.popup_menu.tk_popup(event.x_root, event.y_root, 0)
-
-    def edit(self):
-        """Present a dialog for editing the QuickMin input
-
-        Parameters
-        ----------
-        None
-
-        Returns
-        -------
-        None
-
-        See Also
-        --------
-        TkQuickMin.right_click
-        """
-
-        if self.dialog is None:
-            self.create_dialog()
-
-        self.dialog.activate(geometry="centerscreenfirst")
-
-    def handle_dialog(self, result):
-        """Handle the closing of the edit dialog
-
-        What to do depends on the button used to close the dialog. If
-        the user closes it by clicking the "x" of the dialog window,
-        None is returned, which we take as equivalent to cancel.
-
-        Parameters
-        ----------
-        result : None or str
-            The value of this variable depends on what the button
-            the user clicked.
-
-        Returns
-        -------
-        None
-        """
-
-        if result is None or result == "Cancel":
-            self.dialog.deactivate(result)
-            return
-
-        if result == "Help":
-            # display help!!!
-            return
-
-        if result != "OK":
-            self.dialog.deactivate(result)
-            raise RuntimeError(f"Don't recognize dialog result '{result}'")
-
-        self.dialog.deactivate(result)
-        # Shortcut for parameters
-        P = self.node.parameters
-
-        # Get the values for all the widgets. This may be overkill, but
-        # it is easy! You can sort out what it all means later, or
-        # be a bit more selective.
-        for key in P:
-            P[key].set_from_widget()
-
-    def handle_help(self):
-        """Shows the help to the user when click on help button.
-
-        Parameters
-        ----------
-        None
-
-        Returns
-        -------
-        None
-        """
-        print("Help not implemented yet for QuickMin!")

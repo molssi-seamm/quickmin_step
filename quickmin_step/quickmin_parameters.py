@@ -132,6 +132,16 @@ class QuickMinParameters(seamm.Parameters):
             "description": "Configuration name:",
             "help_text": "The name for the new configuration",
         },
+        # Results handling
+        "results": {
+            "default": {},
+            "kind": "dictionary",
+            "default_units": "",
+            "enumeration": tuple(),
+            "format_string": "",
+            "description": "results",
+            "help_text": "The results to save to variables or in tables.",
+        },
     }
 
     def __init__(self, defaults={}, data=None):

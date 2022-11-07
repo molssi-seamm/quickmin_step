@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>quickmin_step.quickmin_parameters &mdash; SEAMM QuickMin Plug-in 2022.10.23+3.g887de3a documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> SEAMM QuickMin Plug-in
+          </a>
+              <div class="version">
+                2022.10.23+3.g887de3a
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/index.html">User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/index.html">Developer Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../authors.html">Development Team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../history.html">History</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://molssi-seamm.github.io">Main SEAMM documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">SEAMM QuickMin Plug-in</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">quickmin_step.quickmin_parameters</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for quickmin_step.quickmin_parameters</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Control parameters for the QuickMin step in a SEAMM flowchart</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">seamm</span>
+<span class="kn">import</span> <span class="nn">pprint</span>  <span class="c1"># noqa: F401</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="QuickMinParameters"><a class="viewcode-back" href="../../developer/quickmin_step.html#quickmin_step.quickmin_parameters.QuickMinParameters">[docs]</a><span class="k">class</span> <span class="nc">QuickMinParameters</span><span class="p">(</span><span class="n">seamm</span><span class="o">.</span><span class="n">Parameters</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The control parameters for QuickMin.</span>
+
+<span class="sd">    The developer will add a dictionary of Parameters to this class.</span>
+<span class="sd">    The keys are parameters for the current plugin, which themselves</span>
+<span class="sd">    might be dictionaries.</span>
+
+<span class="sd">    You need to replace the &quot;time&quot; example below with one or more</span>
+<span class="sd">    definitions of the control parameters for your plugin and application.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    ::</span>
+
+<span class="sd">        parameters = {</span>
+<span class="sd">            &quot;time&quot;: {</span>
+<span class="sd">                &quot;default&quot;: 100.0,</span>
+<span class="sd">                &quot;kind&quot;: &quot;float&quot;,</span>
+<span class="sd">                &quot;default_units&quot;: &quot;ps&quot;,</span>
+<span class="sd">                &quot;enumeration&quot;: tuple(),</span>
+<span class="sd">                &quot;format_string&quot;: &quot;.1f&quot;,</span>
+<span class="sd">                &quot;description&quot;: &quot;Simulation time:&quot;,</span>
+<span class="sd">                &quot;help_text&quot;: (&quot;The time to simulate in the dynamics run.&quot;)</span>
+<span class="sd">            },</span>
+<span class="sd">        }</span>
+
+<span class="sd">    parameters : {str: {str: str}}</span>
+<span class="sd">        A dictionary containing the parameters for the current step.</span>
+<span class="sd">        Each key of the dictionary is a dictionary that contains the</span>
+<span class="sd">        the following keys:</span>
+
+<span class="sd">    parameters[&quot;default&quot;] :</span>
+<span class="sd">        The default value of the parameter, used to reset it.</span>
+
+<span class="sd">    parameters[&quot;kind&quot;] : enum()</span>
+<span class="sd">        Specifies the kind of a variable. One of  &quot;integer&quot;, &quot;float&quot;, &quot;string&quot;,</span>
+<span class="sd">        &quot;boolean&quot;, or &quot;enum&quot;</span>
+
+<span class="sd">        While the &quot;kind&quot; of a variable might be a numeric value, it may still have</span>
+<span class="sd">        enumerated custom values meaningful to the user. For instance, if the parameter</span>
+<span class="sd">        is a convergence criterion for an optimizer, custom values like &quot;normal&quot;,</span>
+<span class="sd">        &quot;precise&quot;, etc, might be adequate. In addition, any parameter can be set to a</span>
+<span class="sd">        variable of expression, indicated by having &quot;$&quot; as the first character in the</span>
+<span class="sd">        field. For example, $OPTIMIZER_CONV.</span>
+
+<span class="sd">    parameters[&quot;default_units&quot;] : str</span>
+<span class="sd">        The default units, used for resetting the value.</span>
+
+<span class="sd">    parameters[&quot;enumeration&quot;]: tuple</span>
+<span class="sd">        A tuple of enumerated values.</span>
+
+<span class="sd">    parameters[&quot;format_string&quot;]: str</span>
+<span class="sd">        A format string for &quot;pretty&quot; output.</span>
+
+<span class="sd">    parameters[&quot;description&quot;]: str</span>
+<span class="sd">        A short string used as a prompt in the GUI.</span>
+
+<span class="sd">    parameters[&quot;help_text&quot;]: str</span>
+<span class="sd">        A longer string to display as help for the user.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    QuickMin, TkQuickMin, QuickMin, QuickMinParameters, QuickMinStep</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;forcefield&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="s2">&quot;best available&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;kind&quot;</span><span class="p">:</span> <span class="s2">&quot;enum&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;enumeration&quot;</span><span class="p">:</span> <span class="p">(</span>
+                <span class="s2">&quot;best available&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;GAFF -- General Amber Force Field&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Ghemical -- Ghemical force field&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;MMFF94 -- MMFF94 force field&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;MMFF94s -- MMFF94s force field for minimization&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;UFF -- Universal Force Field&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="s2">&quot;format_string&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Forcefield:&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;help_text&quot;</span><span class="p">:</span> <span class="s2">&quot;The forcefield to use.&quot;</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;n_steps&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+            <span class="s2">&quot;kind&quot;</span><span class="p">:</span> <span class="s2">&quot;integer&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;default_units&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;enumeration&quot;</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">(),</span>
+            <span class="s2">&quot;format_string&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Maximum steps:&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;help_text&quot;</span><span class="p">:</span> <span class="s2">&quot;The maximum number of steps to run.&quot;</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="c1"># Put in the configuration handling options needed</span>
+        <span class="s2">&quot;structure handling&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="s2">&quot;Create a new configuration&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;kind&quot;</span><span class="p">:</span> <span class="s2">&quot;enum&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;default_units&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;enumeration&quot;</span><span class="p">:</span> <span class="p">(</span>
+                <span class="s2">&quot;Overwrite the current configuration&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Create a new configuration&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="s2">&quot;format_string&quot;</span><span class="p">:</span> <span class="s2">&quot;s&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Configuration handling:&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;help_text&quot;</span><span class="p">:</span> <span class="p">(</span>
+                <span class="s2">&quot;Whether to overwrite the current configuration, or create a new &quot;</span>
+                <span class="s2">&quot;configuration or system and configuration for the new structure&quot;</span>
+            <span class="p">),</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;configuration name&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="s2">&quot;optimized with &lt;Forcefield&gt;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;kind&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;default_units&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;enumeration&quot;</span><span class="p">:</span> <span class="p">(</span>
+                <span class="s2">&quot;optimized with &lt;Forcefield&gt;&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;keep current name&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;use SMILES string&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;use Canonical SMILES string&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;use configuration number&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="s2">&quot;format_string&quot;</span><span class="p">:</span> <span class="s2">&quot;s&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Configuration name:&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;help_text&quot;</span><span class="p">:</span> <span class="s2">&quot;The name for the new configuration&quot;</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="c1"># Results handling</span>
+        <span class="s2">&quot;results&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="p">{},</span>
+            <span class="s2">&quot;kind&quot;</span><span class="p">:</span> <span class="s2">&quot;dictionary&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;default_units&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;enumeration&quot;</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">(),</span>
+            <span class="s2">&quot;format_string&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;results&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;help_text&quot;</span><span class="p">:</span> <span class="s2">&quot;The results to save to variables or in tables.&quot;</span><span class="p">,</span>
+        <span class="p">},</span>
+    <span class="p">}</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">defaults</span><span class="o">=</span><span class="p">{},</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize the parameters, by default with the parameters defined above</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        defaults: dict</span>
+<span class="sd">            A dictionary of parameters to initialize. The parameters</span>
+<span class="sd">            above are used first and any given will override/add to them.</span>
+<span class="sd">        data: dict</span>
+<span class="sd">            A dictionary of keys and a subdictionary with value and units</span>
+<span class="sd">            for updating the current, default values.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;QuickMinParameters.__init__&quot;</span><span class="p">)</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">defaults</span><span class="o">=</span><span class="p">{</span><span class="o">**</span><span class="n">QuickMinParameters</span><span class="o">.</span><span class="n">parameters</span><span class="p">,</span> <span class="o">**</span><span class="n">defaults</span><span class="p">},</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span>
+        <span class="p">)</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

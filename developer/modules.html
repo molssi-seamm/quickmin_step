@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>quickmin_step &mdash; SEAMM QuickMin Plug-in 2022.11.7 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="quickmin_step package" href="quickmin_step.html" />
+    <link rel="prev" title="Usage" href="usage.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> SEAMM QuickMin Plug-in
+          </a>
+              <div class="version">
+                2022.11.7
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../user/index.html">User Documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Developer Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">quickmin_step</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quickmin_step.html">quickmin_step package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html">Contributing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Development Team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">History</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://molssi-seamm.github.io">Main SEAMM documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SEAMM QuickMin Plug-in</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Developer Documentation</a></li>
+      <li class="breadcrumb-item active">quickmin_step</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/developer/modules.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="quickmin-step">
+<h1>quickmin_step<a class="headerlink" href="#quickmin-step" title="Permalink to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="quickmin_step.html">quickmin_step package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quickmin_step.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickmin_step.html#module-quickmin_step.metadata">quickmin_step.metadata module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quickmin_step.html#quickmin_step.metadata.metadata"><code class="docutils literal notranslate"><span class="pre">metadata</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quickmin_step.html#module-quickmin_step.quickmin">quickmin_step.quickmin module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quickmin_step.html#quickmin_step.quickmin.OutputGrabber"><code class="docutils literal notranslate"><span class="pre">OutputGrabber</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quickmin_step.html#quickmin_step.quickmin.OutputGrabber.escape_char"><code class="docutils literal notranslate"><span class="pre">OutputGrabber.escape_char</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quickmin_step.html#quickmin_step.quickmin.OutputGrabber.readOutput"><code class="docutils literal notranslate"><span class="pre">OutputGrabber.readOutput()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quickmin_step.html#quickmin_step.quickmin.OutputGrabber.start"><code class="docutils literal notranslate"><span class="pre">OutputGrabber.start()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quickmin_step.html#quickmin_step.quickmin.OutputGrabber.stop"><code class="docutils literal notranslate"><span class="pre">OutputGrabber.stop()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="quickmin_step.html#quickmin_step.quickmin.QuickMin"><code class="docutils literal notranslate"><span class="pre">QuickMin</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quickmin_step.html#quickmin_step.quickmin.QuickMin.parser"><code class="docutils literal notranslate"><span class="pre">QuickMin.parser</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quickmin_step.html#quickmin_step.quickmin.QuickMin.options"><code class="docutils literal notranslate"><span class="pre">QuickMin.options</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quickmin_step.html#quickmin_step.quickmin.QuickMin.subflowchart"><code class="docutils literal notranslate"><span class="pre">QuickMin.subflowchart</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quickmin_step.html#quickmin_step.quickmin.QuickMin.parameters"><code class="docutils literal notranslate"><span class="pre">QuickMin.parameters</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quickmin_step.html#quickmin_step.quickmin.QuickMin.description_text"><code class="docutils literal notranslate"><span class="pre">QuickMin.description_text()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quickmin_step.html#quickmin_step.quickmin.QuickMin.git_revision"><code class="docutils literal notranslate"><span class="pre">QuickMin.git_revision</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quickmin_step.html#quickmin_step.quickmin.QuickMin.run"><code class="docutils literal notranslate"><span class="pre">QuickMin.run()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quickmin_step.html#quickmin_step.quickmin.QuickMin.version"><code class="docutils literal notranslate"><span class="pre">QuickMin.version</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quickmin_step.html#module-quickmin_step.quickmin_parameters">quickmin_step.quickmin_parameters module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quickmin_step.html#quickmin_step.quickmin_parameters.QuickMinParameters"><code class="docutils literal notranslate"><span class="pre">QuickMinParameters</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quickmin_step.html#quickmin_step.quickmin_parameters.QuickMinParameters.parameters"><code class="docutils literal notranslate"><span class="pre">QuickMinParameters.parameters</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quickmin_step.html#module-quickmin_step.quickmin_step">quickmin_step.quickmin_step module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quickmin_step.html#quickmin_step.quickmin_step.QuickMinStep"><code class="docutils literal notranslate"><span class="pre">QuickMinStep</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quickmin_step.html#quickmin_step.quickmin_step.QuickMinStep.create_node"><code class="docutils literal notranslate"><span class="pre">QuickMinStep.create_node()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quickmin_step.html#quickmin_step.quickmin_step.QuickMinStep.create_tk_node"><code class="docutils literal notranslate"><span class="pre">QuickMinStep.create_tk_node()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quickmin_step.html#quickmin_step.quickmin_step.QuickMinStep.description"><code class="docutils literal notranslate"><span class="pre">QuickMinStep.description()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quickmin_step.html#quickmin_step.quickmin_step.QuickMinStep.my_description"><code class="docutils literal notranslate"><span class="pre">QuickMinStep.my_description</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quickmin_step.html#module-quickmin_step.tk_quickmin">quickmin_step.tk_quickmin module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quickmin_step.html#quickmin_step.tk_quickmin.TkQuickMin"><code class="docutils literal notranslate"><span class="pre">TkQuickMin</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quickmin_step.html#quickmin_step.tk_quickmin.TkQuickMin.tk_flowchart"><code class="docutils literal notranslate"><span class="pre">TkQuickMin.tk_flowchart</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quickmin_step.html#quickmin_step.tk_quickmin.TkQuickMin.node"><code class="docutils literal notranslate"><span class="pre">TkQuickMin.node</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quickmin_step.html#quickmin_step.tk_quickmin.TkQuickMin.namespace"><code class="docutils literal notranslate"><span class="pre">TkQuickMin.namespace</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quickmin_step.html#quickmin_step.tk_quickmin.TkQuickMin.tk_subflowchart"><code class="docutils literal notranslate"><span class="pre">TkQuickMin.tk_subflowchart</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quickmin_step.html#quickmin_step.tk_quickmin.TkQuickMin.canvas"><code class="docutils literal notranslate"><span class="pre">TkQuickMin.canvas</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quickmin_step.html#quickmin_step.tk_quickmin.TkQuickMin.dialog"><code class="docutils literal notranslate"><span class="pre">TkQuickMin.dialog</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quickmin_step.html#quickmin_step.tk_quickmin.TkQuickMin.x"><code class="docutils literal notranslate"><span class="pre">TkQuickMin.x</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quickmin_step.html#quickmin_step.tk_quickmin.TkQuickMin.y"><code class="docutils literal notranslate"><span class="pre">TkQuickMin.y</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quickmin_step.html#quickmin_step.tk_quickmin.TkQuickMin.w"><code class="docutils literal notranslate"><span class="pre">TkQuickMin.w</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quickmin_step.html#quickmin_step.tk_quickmin.TkQuickMin.h"><code class="docutils literal notranslate"><span class="pre">TkQuickMin.h</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quickmin_step.html#quickmin_step.tk_quickmin.TkQuickMin.create_dialog"><code class="docutils literal notranslate"><span class="pre">TkQuickMin.create_dialog()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quickmin_step.html#quickmin_step.tk_quickmin.TkQuickMin.reset_dialog"><code class="docutils literal notranslate"><span class="pre">TkQuickMin.reset_dialog()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quickmin_step.html#quickmin_step.tk_quickmin.TkQuickMin.right_click"><code class="docutils literal notranslate"><span class="pre">TkQuickMin.right_click()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quickmin_step.html#module-quickmin_step">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="usage.html" class="btn btn-neutral float-left" title="Usage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="quickmin_step.html" class="btn btn-neutral float-right" title="quickmin_step package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

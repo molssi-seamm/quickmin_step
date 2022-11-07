@@ -2,6 +2,10 @@
 History
 =======
 
+2022.11.7 -- Internal Release
+    Switching from LGTM code analysis to GitHub Actions using CodeQL, since LGTM is
+    shutting down!
+    
 2022.10.23 -- Properties added
     Added a single property, 'total energy#QuickMin#<forcefield>', to store the final
     energy in the database. Also added 'total energy' as a result for tables or

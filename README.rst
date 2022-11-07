@@ -14,8 +14,8 @@ SEAMM QuickMin Plug-in
    :target: https://codecov.io/gh/molssi-seamm/quickmin_step
    :alt: Code Coverage
 
-.. image:: https://img.shields.io/lgtm/grade/python/g/molssi-seamm/quickmin_step.svg?logo=lgtm&logoWidth=18
-   :target: https://lgtm.com/projects/g/molssi-seamm/quickmin_step/context:python
+.. image:: https://github.com/molssi-seamm/quickmin_step/workflows/CodeQL/badge.svg
+   :target: https://github.com/molssi-seamm/quickmin_step/security/code-scanning
    :alt: Code Quality
 
 .. image:: https://github.com/molssi-seamm/quickmin_step/workflows/Documentation/badge.svg

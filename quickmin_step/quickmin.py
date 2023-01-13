@@ -390,6 +390,7 @@ class QuickMin(seamm.Node):
                         f"Could not assign forcefield {ff_name} to the molecule"
                     )
                 obFF.ConjugateGradients(P["n_steps"])
+                obFF.GetCoordinates(obmol)
 
                 energy = obFF.Energy(False)
                 units = obFF.GetUnit()

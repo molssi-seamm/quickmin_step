@@ -2,6 +2,10 @@
 History
 =======
 
+2023.1.14 -- Changed documentation to new style and theme.
+    Switched the documentation to the MolSSI theme and diátaxis layout, though more work
+    is needed.
+    
 2022.11.7 -- Internal Release
     Switching from LGTM code analysis to GitHub Actions using CodeQL, since LGTM is
     shutting down!

@@ -19,7 +19,7 @@ class QuickMinStep(object):
             It contains the following keys: description, group, name.
 
         my_description["description"] : tuple
-            A description of the {{cookiecutter.step}} step. It must be
+            A description of the QuickMin step. It must be
             clear to non-experts.
 
         my_description["group"] : str

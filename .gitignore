@@ -131,6 +131,8 @@ coverage.xml
 
 # Sphinx documentation
 docs/_build/
+docs/developer/modules.rst
+docs/developer/*_step.rst
 
 # IntelliJ Idea family of suites
 .idea

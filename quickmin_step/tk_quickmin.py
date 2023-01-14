@@ -17,7 +17,7 @@ class TkQuickMin(seamm.TkNode):
     """
     The graphical part of a QuickMin step in a flowchart.
 
-    Attributes
+    Parameters
     ----------
     tk_flowchart : TkFlowchart = None
         The flowchart that we belong to.

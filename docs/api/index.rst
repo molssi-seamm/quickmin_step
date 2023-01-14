@@ -1,15 +1,13 @@
-Developer Documentation
-=======================
+API Documentation
+=================
 
 Contents:
 
 .. toctree::
    :maxdepth: 2
 
-   installation
-   usage
    modules
-   contributing
+
 
 Indices and tables
 ------------------

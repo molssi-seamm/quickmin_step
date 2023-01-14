@@ -128,7 +128,7 @@ class QuickMin(seamm.Node):
     """
     The non-graphical part of a QuickMin step in a flowchart.
 
-    Attributes
+    Parameters
     ----------
     parser : configargparse.ArgParser
         The parser object.
@@ -390,6 +390,7 @@ class QuickMin(seamm.Node):
                         f"Could not assign forcefield {ff_name} to the molecule"
                     )
                 obFF.ConjugateGradients(P["n_steps"])
+                obFF.GetCoordinates(obmol)
 
                 energy = obFF.Energy(False)
                 units = obFF.GetUnit()

@@ -18,7 +18,7 @@ SEAMM QuickMin Plug-in
    :target: https://github.com/molssi-seamm/quickmin_step/security/code-scanning
    :alt: Code Quality
 
-.. image:: https://github.com/molssi-seamm/quickmin_step/workflows/Documentation/badge.svg
+.. image:: https://github.com/molssi-seamm/quickmin_step/workflows/Release/badge.svg
    :target: https://molssi-seamm.github.io/quickmin_step/index.html
    :alt: Documentation Status
 

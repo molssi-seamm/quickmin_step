@@ -128,7 +128,7 @@ class QuickMin(seamm.Node):
     """
     The non-graphical part of a QuickMin step in a flowchart.
 
-    Attributes
+    Parameters
     ----------
     parser : configargparse.ArgParser
         The parser object.

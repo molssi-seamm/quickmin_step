@@ -127,6 +127,7 @@ class TkQuickMin(seamm.TkNode):
                 "results",
                 "extra keywords",
                 "create tables",
+                "subsequent structure handling",
             ):
                 self[key] = P[key].widget(frame)
 
@@ -174,6 +175,7 @@ class TkQuickMin(seamm.TkNode):
                 "results",
                 "extra keywords",
                 "create tables",
+                "subsequent structure handling",
             ):
                 self[key].grid(row=row, column=0, sticky=tk.EW)
                 widgets.append(self[key])

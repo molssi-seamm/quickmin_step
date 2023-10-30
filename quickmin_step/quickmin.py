@@ -222,33 +222,13 @@ class QuickMin(seamm.Node):
         text = f"Minimizing the structure with {ff_name}, with a maximum of "
         text += f"{n_steps} steps."
 
-        if "Create" in P["structure handling"]:
-            text += " The optimized structure will be put in a new configuration "
+        if P["forcefield"] == "best available":
+            kwargs = {}
         else:
-            text += " The optimized structure will overwrite the current configuration "
+            kwargs = {"forcefield": ff_name}
+        text += seamm.standard_parameters.structure_handling_description(P, **kwargs)
 
-        confname = P["configuration name"]
-        if confname == "use SMILES string":
-            text += "using SMILES as its name."
-        elif confname == "use Canonical SMILES string":
-            text += "using canonical SMILES as its name."
-        elif confname == "keep current name":
-            text += "keeping the current name."
-        elif confname == "optimized with <Forcefield>":
-            if forcefield == "best available":
-                text += (
-                    "with 'optimized with <the name of the forcefield used>' as its"
-                    " name."
-                )
-            else:
-                text += f"with 'optimized with {ff_name}' as its name."
-        elif confname == "use configuration number":
-            text += "using the index of the configuration (1, 2, ...) as its name."
-        else:
-            confname = confname.replace("<Forcefield>", ff_name)
-            text += f"with '{confname}' as its name."
-
-        return self.header + "\n" + __(text, **P, indent=4 * " ").__str__()
+        return self.header + "\n" + __(text, indent=4 * " ").__str__()
 
     def run(self):
         """Run a QuickMin step.
@@ -271,7 +251,7 @@ class QuickMin(seamm.Node):
         )
 
         # Print what we are doing
-        printer.important(__(self.description_text(P), indent=self.indent))
+        printer.important(__(self.description_text(P)))
 
         # Add the citations for Open Babel
         self.references.cite(
@@ -419,51 +399,26 @@ class QuickMin(seamm.Node):
 
         if converged:
             text = (
-                f"The minimization converged in {n_iterations} steps to "
-                f"{energy:.3f} {units}."
+                f"The minimization using {ff_name} converged in {n_iterations} steps "
+                f"to {energy:.3f} {units}. "
             )
         else:
             text = (
-                f"The minimization did not converge in {n_iterations} steps! "
-                f"The final energy was {energy:.3f} {units}."
+                f"The minimization with {ff_name} did not converge in {n_iterations} "
+                f"steps! The final energy was {energy:.3f} {units}. "
             )
 
         # Save the structure
-        if (
-            "structure handling" in P
-            and P["structure handling"] == "Create a new configuration"
-        ):
-            configuration = system.create_configuration(
-                periodicity=configuration.periodicity,
-                atomset=configuration.atomset,
-                bondset=configuration.bondset,
-                cell_id=configuration.cell_id,
-            )
-            text += " The final structure was saved in the new configuration "
-        else:
-            text += " The final structure replaced the original configuration "
+        new_system, new_configuration = self.get_system_configuration(
+            P, same_as=configuration
+        )
 
-        configuration.from_OBMol(obmol)
+        configuration.coordinates_from_OBMol(obmol)
 
-        # And the name of the configuration.
-        if "configuration name" in P:
-            if P["configuration name"] == "optimized with <Forcefield>":
-                configuration.name = f"optimized with {ff_name}"
-            elif P["configuration name"] == "keep current name":
-                pass
-            elif P["configuration name"] == "use SMILES string":
-                configuration.name = configuration.smiles
-            elif P["configuration name"] == "use Canonical SMILES string":
-                configuration.name = configuration.canonical_smiles
-            elif P["configuration name"] == "use configuration number":
-                configuration.name = str(configuration.n_configurations)
-
-        name = configuration.name
-        if len(name) > 30:
-            name = name[0:30] + "..."
-        text += f"named '{name}'."
-
-        printer.normal(__(text, indent=self.indent))
+        text += seamm.standard_parameters.set_names(
+            new_system, new_configuration, P, _first=True, forcefield=ff_name
+        )
+        printer.normal(__(text, indent=4 * " "))
         printer.normal("")
 
         # Add the citation(s) for the forcefield

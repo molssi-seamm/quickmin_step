@@ -102,36 +102,36 @@ class QuickMinParameters(seamm.Parameters):
             "help_text": "The maximum number of steps to run.",
         },
         # Put in the configuration handling options needed
-        "structure handling": {
-            "default": "Create a new configuration",
-            "kind": "enum",
-            "default_units": "",
-            "enumeration": (
-                "Overwrite the current configuration",
-                "Create a new configuration",
-            ),
-            "format_string": "s",
-            "description": "Configuration handling:",
-            "help_text": (
-                "Whether to overwrite the current configuration, or create a new "
-                "configuration or system and configuration for the new structure"
-            ),
-        },
-        "configuration name": {
-            "default": "optimized with <Forcefield>",
-            "kind": "string",
-            "default_units": "",
-            "enumeration": (
-                "optimized with <Forcefield>",
-                "keep current name",
-                "use SMILES string",
-                "use Canonical SMILES string",
-                "use configuration number",
-            ),
-            "format_string": "s",
-            "description": "Configuration name:",
-            "help_text": "The name for the new configuration",
-        },
+        # "structure handling": {
+        #     "default": "Create a new configuration",
+        #     "kind": "enum",
+        #     "default_units": "",
+        #     "enumeration": (
+        #         "Overwrite the current configuration",
+        #         "Create a new configuration",
+        #     ),
+        #     "format_string": "s",
+        #     "description": "Configuration handling:",
+        #     "help_text": (
+        #         "Whether to overwrite the current configuration, or create a new "
+        #         "configuration or system and configuration for the new structure"
+        #     ),
+        # },
+        # "configuration name": {
+        #     "default": "optimized with <Forcefield>",
+        #     "kind": "string",
+        #     "default_units": "",
+        #     "enumeration": (
+        #         "optimized with <Forcefield>",
+        #         "keep current name",
+        #         "use SMILES string",
+        #         "use Canonical SMILES string",
+        #         "use configuration number",
+        #     ),
+        #     "format_string": "s",
+        #     "description": "Configuration name:",
+        #     "help_text": "The name for the new configuration",
+        # },
         # Results handling
         "results": {
             "default": {},
@@ -165,5 +165,19 @@ class QuickMinParameters(seamm.Parameters):
         logger.debug("QuickMinParameters.__init__")
 
         super().__init__(
-            defaults={**QuickMinParameters.parameters, **defaults}, data=data
+            defaults={
+                **QuickMinParameters.parameters,
+                **seamm.standard_parameters.structure_handling_parameters,
+                **defaults,
+            },
+            data=data,
         )
+
+        # Do any local editing of defaults
+        tmp = self["system name"]
+        tmp._data["enumeration"] = (*tmp.enumeration, "optimized with {forcefield}")
+        tmp.default = "keep current name"
+
+        tmp = self["configuration name"]
+        tmp._data["enumeration"] = ("optimized with {forcefield}", *tmp.enumeration)
+        tmp.default = "optimized with {forcefield}"

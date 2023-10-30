@@ -1,6 +1,9 @@
 =======
 History
 =======
+2023.10.30 -- Enhanced structure handling.
+    Switched to standard handling of structures, which adds ability to name with the
+    IUPAC name, InCHI, and InChIKey in addition to previous methods.
 
 2023.1.14 -- Changed documentation to new style and theme.
     Switched the documentation to the MolSSI theme and diátaxis layout, though more work

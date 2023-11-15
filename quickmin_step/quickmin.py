@@ -409,14 +409,12 @@ class QuickMin(seamm.Node):
             )
 
         # Save the structure
-        new_system, new_configuration = self.get_system_configuration(
-            P, same_as=configuration
-        )
+        system, configuration = self.get_system_configuration(P)
 
         configuration.coordinates_from_OBMol(obmol)
 
         text += seamm.standard_parameters.set_names(
-            new_system, new_configuration, P, _first=True, forcefield=ff_name
+            system, configuration, P, _first=True, forcefield=ff_name
         )
         printer.normal(__(text, indent=4 * " "))
         printer.normal("")

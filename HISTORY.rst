@@ -1,6 +1,9 @@
 =======
 History
 =======
+2023.11.15 -- Bugfix: structure handling
+    Error putting the coordinates into a newly created configuration.
+    
 2023.10.30 -- Enhanced structure handling.
     Switched to standard handling of structures, which adds ability to name with the
     IUPAC name, InCHI, and InChIKey in addition to previous methods.

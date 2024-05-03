@@ -2,12 +2,12 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>quickmin_step.quickmin &#8212; SEAMM QuickMin Plug-in 2023.11.15 documentation</title>
+    <title>quickmin_step.quickmin &#8212; SEAMM QuickMin Plug-in 2024.5.3 documentation</title>
   
   
   
@@ -17,15 +17,15 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -33,12 +33,12 @@
     <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=c224919a" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script src="../../_static/documentation_options.js?v=2ec17df6"></script>
-    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/documentation_options.js?v=b35b4dcd"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=f281be69"></script>
@@ -55,10 +55,9 @@
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>
@@ -99,7 +98,7 @@
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
 <div class="bd-header__inner bd-page-width">
   <label class="sidebar-toggle primary-toggle" for="__primary">
     <span class="fa-solid fa-bars"></span>
@@ -109,6 +108,7 @@
   <div class="col-lg-3 navbar-header-items__start">
     
       <div class="navbar-item">
+
   
 
 <a class="navbar-brand logo" href="../../index.html">
@@ -136,13 +136,8 @@
     
     <div class="me-auto navbar-header-items__center">
       
-        <div class="navbar-item"><nav class="navbar-nav">
-  <p class="sidebar-header-items__title"
-     role="heading"
-     aria-level="1"
-     aria-label="Site Navigation">
-    Site Navigation
-  </p>
+        <div class="navbar-item">
+<nav class="navbar-nav">
   <ul class="bd-navbar-elements navbar-nav">
     
                     <li class="nav-item">
@@ -218,6 +213,7 @@
       
         <div class="navbar-item navbar-persistent--container">
           
+
  <script>
  document.write(`
    <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -231,6 +227,7 @@
       
       
         <div class="navbar-item">
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -275,6 +272,7 @@ document.write(`
   
   
     <div class="navbar-persistent--mobile">
+
  <script>
  document.write(`
    <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -290,10 +288,15 @@ document.write(`
   
 </div>
 
-    </nav>
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
       
       <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
         
@@ -304,13 +307,8 @@ document.write(`
     
       <div class="sidebar-header-items__center">
         
-          <div class="navbar-item"><nav class="navbar-nav">
-  <p class="sidebar-header-items__title"
-     role="heading"
-     aria-level="1"
-     aria-label="Site Navigation">
-    Site Navigation
-  </p>
+          <div class="navbar-item">
+<nav class="navbar-nav">
   <ul class="bd-navbar-elements navbar-nav">
     
                     <li class="nav-item">
@@ -386,6 +384,7 @@ document.write(`
       <div class="sidebar-header-items__end">
         
           <div class="navbar-item">
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -478,7 +477,7 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <h1>Source code for quickmin_step.quickmin</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
@@ -492,6 +491,7 @@ document.write(`
 <span class="kn">import</span> <span class="nn">time</span>
 
 <span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">import</span> <span class="nn">pkg_resources</span>
 <span class="kn">import</span> <span class="nn">pprint</span>  <span class="c1"># noqa: F401</span>
@@ -711,6 +711,7 @@ document.write(`
         <span class="k">if</span> <span class="n">P</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">P</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">values_to_dict</span><span class="p">()</span>
 
+        <span class="n">calculation</span> <span class="o">=</span> <span class="n">P</span><span class="p">[</span><span class="s2">&quot;calculation&quot;</span><span class="p">]</span>
         <span class="n">n_steps</span> <span class="o">=</span> <span class="n">P</span><span class="p">[</span><span class="s2">&quot;n_steps&quot;</span><span class="p">]</span>
         <span class="n">forcefield</span> <span class="o">=</span> <span class="n">P</span><span class="p">[</span><span class="s2">&quot;forcefield&quot;</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">forcefield</span> <span class="o">==</span> <span class="s2">&quot;best available&quot;</span><span class="p">:</span>
@@ -718,14 +719,19 @@ document.write(`
         <span class="k">else</span><span class="p">:</span>
             <span class="n">ff_name</span> <span class="o">=</span> <span class="n">forcefield</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 
-        <span class="n">text</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Minimizing the structure with </span><span class="si">{</span><span class="n">ff_name</span><span class="si">}</span><span class="s2">, with a maximum of &quot;</span>
-        <span class="n">text</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n_steps</span><span class="si">}</span><span class="s2"> steps.&quot;</span>
+        <span class="k">if</span> <span class="n">calculation</span> <span class="o">==</span> <span class="s2">&quot;optimization&quot;</span><span class="p">:</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Minimizing the structure with </span><span class="si">{</span><span class="n">ff_name</span><span class="si">}</span><span class="s2">, with a maximum of &quot;</span>
+            <span class="n">text</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n_steps</span><span class="si">}</span><span class="s2"> steps.&quot;</span>
 
-        <span class="k">if</span> <span class="n">P</span><span class="p">[</span><span class="s2">&quot;forcefield&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;best available&quot;</span><span class="p">:</span>
-            <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="k">if</span> <span class="n">P</span><span class="p">[</span><span class="s2">&quot;forcefield&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;best available&quot;</span><span class="p">:</span>
+                <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;forcefield&quot;</span><span class="p">:</span> <span class="n">ff_name</span><span class="p">}</span>
+            <span class="n">text</span> <span class="o">+=</span> <span class="n">seamm</span><span class="o">.</span><span class="n">standard_parameters</span><span class="o">.</span><span class="n">structure_handling_description</span><span class="p">(</span>
+                <span class="n">P</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+            <span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;forcefield&quot;</span><span class="p">:</span> <span class="n">ff_name</span><span class="p">}</span>
-        <span class="n">text</span> <span class="o">+=</span> <span class="n">seamm</span><span class="o">.</span><span class="n">standard_parameters</span><span class="o">.</span><span class="n">structure_handling_description</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Performing a quick energy calculation with </span><span class="si">{</span><span class="n">ff_name</span><span class="si">}</span><span class="s2">.&quot;</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">header</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">__</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span> <span class="o">*</span> <span class="s2">&quot; &quot;</span><span class="p">)</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()</span></div>
 
@@ -751,6 +757,7 @@ document.write(`
         <span class="n">P</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">current_values_to_dict</span><span class="p">(</span>
             <span class="n">context</span><span class="o">=</span><span class="n">seamm</span><span class="o">.</span><span class="n">flowchart_variables</span><span class="o">.</span><span class="n">_data</span>
         <span class="p">)</span>
+        <span class="n">calculation</span> <span class="o">=</span> <span class="n">P</span><span class="p">[</span><span class="s2">&quot;calculation&quot;</span><span class="p">]</span>
 
         <span class="c1"># Print what we are doing</span>
         <span class="n">printer</span><span class="o">.</span><span class="n">important</span><span class="p">(</span><span class="n">__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">description_text</span><span class="p">(</span><span class="n">P</span><span class="p">)))</span>
@@ -828,6 +835,7 @@ document.write(`
 
         <span class="n">obmol</span> <span class="o">=</span> <span class="n">configuration</span><span class="o">.</span><span class="n">to_OBMol</span><span class="p">()</span>
 
+        <span class="n">gradients</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">if</span> <span class="n">P</span><span class="p">[</span><span class="s2">&quot;forcefield&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;best available&quot;</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">ff_name</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;GAFF&quot;</span><span class="p">,</span> <span class="s2">&quot;MMFF94s&quot;</span><span class="p">,</span> <span class="s2">&quot;Ghemical&quot;</span><span class="p">,</span> <span class="s2">&quot;UFF&quot;</span><span class="p">):</span>
                 <span class="n">obFF</span> <span class="o">=</span> <span class="n">openbabel</span><span class="o">.</span><span class="n">OBForceField</span><span class="o">.</span><span class="n">FindForceField</span><span class="p">(</span><span class="n">ff_name</span><span class="p">)</span>
@@ -847,12 +855,29 @@ document.write(`
                                 <span class="s2">&quot;Could not find a forcefield for the molecule&quot;</span>
                             <span class="p">)</span>
                         <span class="k">continue</span>
-                    <span class="n">obFF</span><span class="o">.</span><span class="n">ConjugateGradients</span><span class="p">(</span><span class="n">P</span><span class="p">[</span><span class="s2">&quot;n_steps&quot;</span><span class="p">])</span>
+                    <span class="k">if</span> <span class="n">calculation</span> <span class="o">==</span> <span class="s2">&quot;optimization&quot;</span><span class="p">:</span>
+                        <span class="n">obFF</span><span class="o">.</span><span class="n">ConjugateGradients</span><span class="p">(</span><span class="n">P</span><span class="p">[</span><span class="s2">&quot;n_steps&quot;</span><span class="p">])</span>
 
-                    <span class="n">energy</span> <span class="o">=</span> <span class="n">obFF</span><span class="o">.</span><span class="n">Energy</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+                    <span class="n">energy</span> <span class="o">=</span> <span class="n">obFF</span><span class="o">.</span><span class="n">Energy</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
                     <span class="n">units</span> <span class="o">=</span> <span class="n">obFF</span><span class="o">.</span><span class="n">GetUnit</span><span class="p">()</span>
 
-                <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">directory</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;min.out&quot;</span>
+                    <span class="c1"># Capture the gradients</span>
+                    <span class="n">factor</span> <span class="o">=</span> <span class="n">Q_</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">units</span><span class="p">)</span><span class="o">.</span><span class="n">m_as</span><span class="p">(</span><span class="s2">&quot;kJ/mol&quot;</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="n">openbabel</span><span class="o">.</span><span class="n">OBMolAtomIter</span><span class="p">(</span><span class="n">obmol</span><span class="p">):</span>
+                        <span class="c1"># vector objects have to be de-referenced individually (sigh)</span>
+                        <span class="n">grad</span> <span class="o">=</span> <span class="n">obFF</span><span class="o">.</span><span class="n">GetGradient</span><span class="p">(</span><span class="n">atom</span><span class="p">)</span>
+                        <span class="n">gradients</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                            <span class="p">[</span>
+                                <span class="n">factor</span> <span class="o">*</span> <span class="n">grad</span><span class="o">.</span><span class="n">GetX</span><span class="p">(),</span>
+                                <span class="n">factor</span> <span class="o">*</span> <span class="n">grad</span><span class="o">.</span><span class="n">GetY</span><span class="p">(),</span>
+                                <span class="n">factor</span> <span class="o">*</span> <span class="n">grad</span><span class="o">.</span><span class="n">GetZ</span><span class="p">(),</span>
+                            <span class="p">]</span>
+                        <span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">calculation</span> <span class="o">==</span> <span class="s2">&quot;optimization&quot;</span><span class="p">:</span>
+                    <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">directory</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;min.out&quot;</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">directory</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;energy.out&quot;</span>
                 <span class="n">path</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="n">out</span><span class="o">.</span><span class="n">capturedtext</span><span class="p">)</span>
                 <span class="k">break</span>
         <span class="k">else</span><span class="p">:</span>
@@ -871,13 +896,30 @@ document.write(`
                     <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
                         <span class="sa">f</span><span class="s2">&quot;Could not assign forcefield </span><span class="si">{</span><span class="n">ff_name</span><span class="si">}</span><span class="s2"> to the molecule&quot;</span>
                     <span class="p">)</span>
-                <span class="n">obFF</span><span class="o">.</span><span class="n">ConjugateGradients</span><span class="p">(</span><span class="n">P</span><span class="p">[</span><span class="s2">&quot;n_steps&quot;</span><span class="p">])</span>
-                <span class="n">obFF</span><span class="o">.</span><span class="n">GetCoordinates</span><span class="p">(</span><span class="n">obmol</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">calculation</span> <span class="o">==</span> <span class="s2">&quot;optimization&quot;</span><span class="p">:</span>
+                    <span class="n">obFF</span><span class="o">.</span><span class="n">ConjugateGradients</span><span class="p">(</span><span class="n">P</span><span class="p">[</span><span class="s2">&quot;n_steps&quot;</span><span class="p">])</span>
+                    <span class="n">obFF</span><span class="o">.</span><span class="n">GetCoordinates</span><span class="p">(</span><span class="n">obmol</span><span class="p">)</span>
 
-                <span class="n">energy</span> <span class="o">=</span> <span class="n">obFF</span><span class="o">.</span><span class="n">Energy</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+                <span class="n">energy</span> <span class="o">=</span> <span class="n">obFF</span><span class="o">.</span><span class="n">Energy</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
                 <span class="n">units</span> <span class="o">=</span> <span class="n">obFF</span><span class="o">.</span><span class="n">GetUnit</span><span class="p">()</span>
 
-            <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">directory</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;min.out&quot;</span>
+                <span class="c1"># Capture the gradients</span>
+                <span class="n">factor</span> <span class="o">=</span> <span class="n">Q_</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">units</span><span class="p">)</span><span class="o">.</span><span class="n">m_as</span><span class="p">(</span><span class="s2">&quot;kJ/mol&quot;</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="n">openbabel</span><span class="o">.</span><span class="n">OBMolAtomIter</span><span class="p">(</span><span class="n">obmol</span><span class="p">):</span>
+                    <span class="c1"># vector objects have to be de-referenced individually (sigh)</span>
+                    <span class="n">grad</span> <span class="o">=</span> <span class="n">obFF</span><span class="o">.</span><span class="n">GetGradient</span><span class="p">(</span><span class="n">atom</span><span class="p">)</span>
+                    <span class="n">gradients</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                        <span class="p">[</span>
+                            <span class="n">factor</span> <span class="o">*</span> <span class="n">grad</span><span class="o">.</span><span class="n">GetX</span><span class="p">(),</span>
+                            <span class="n">factor</span> <span class="o">*</span> <span class="n">grad</span><span class="o">.</span><span class="n">GetY</span><span class="p">(),</span>
+                            <span class="n">factor</span> <span class="o">*</span> <span class="n">grad</span><span class="o">.</span><span class="n">GetZ</span><span class="p">(),</span>
+                        <span class="p">]</span>
+                    <span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">calculation</span> <span class="o">==</span> <span class="s2">&quot;optimization&quot;</span><span class="p">:</span>
+                <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">directory</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;min.out&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">directory</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;energy.out&quot;</span>
             <span class="n">path</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="n">out</span><span class="o">.</span><span class="n">capturedtext</span><span class="p">)</span>
 
         <span class="c1"># Set the model chemistry to the forcefield name.</span>
@@ -895,20 +937,34 @@ document.write(`
         <span class="c1"># Set up the results data</span>
         <span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">if</span> <span class="n">units</span> <span class="o">==</span> <span class="s2">&quot;kJ/mol&quot;</span><span class="p">:</span>
-            <span class="n">data</span><span class="p">[</span><span class="s2">&quot;total energy&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">energy</span>
+            <span class="n">data</span><span class="p">[</span><span class="s2">&quot;energy&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">energy</span>
+            <span class="n">data</span><span class="p">[</span><span class="s2">&quot;gradients&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gradients</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">data</span><span class="p">[</span><span class="s2">&quot;total energy&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Q_</span><span class="p">(</span><span class="n">energy</span><span class="p">,</span> <span class="n">units</span><span class="p">)</span><span class="o">.</span><span class="n">m_as</span><span class="p">(</span><span class="s2">&quot;kJ/mol&quot;</span><span class="p">)</span>
+            <span class="n">data</span><span class="p">[</span><span class="s2">&quot;energy&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Q_</span><span class="p">(</span><span class="n">energy</span><span class="p">,</span> <span class="n">units</span><span class="p">)</span><span class="o">.</span><span class="n">m_as</span><span class="p">(</span><span class="s2">&quot;kJ/mol&quot;</span><span class="p">)</span>
+            <span class="n">tmp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">gradients</span><span class="p">)</span> <span class="o">*</span> <span class="n">Q_</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">units</span><span class="p">)</span><span class="o">.</span><span class="n">m_as</span><span class="p">(</span><span class="s2">&quot;kJ/mol&quot;</span><span class="p">)</span>
+            <span class="n">data</span><span class="p">[</span><span class="s2">&quot;gradients&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;forcefield&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ff_name</span>
+        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;model&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span>
 
-        <span class="k">if</span> <span class="n">converged</span><span class="p">:</span>
-            <span class="n">text</span> <span class="o">=</span> <span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;The minimization using </span><span class="si">{</span><span class="n">ff_name</span><span class="si">}</span><span class="s2"> converged in </span><span class="si">{</span><span class="n">n_iterations</span><span class="si">}</span><span class="s2"> steps &quot;</span>
-                <span class="sa">f</span><span class="s2">&quot;to </span><span class="si">{</span><span class="n">energy</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">units</span><span class="si">}</span><span class="s2">. &quot;</span>
-            <span class="p">)</span>
+        <span class="k">if</span> <span class="n">calculation</span> <span class="o">==</span> <span class="s2">&quot;optimization&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">converged</span><span class="p">:</span>
+                <span class="n">text</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;The minimization using </span><span class="si">{</span><span class="n">ff_name</span><span class="si">}</span><span class="s2"> converged in </span><span class="si">{</span><span class="n">n_iterations</span><span class="si">}</span><span class="s2"> &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;steps to </span><span class="si">{</span><span class="n">energy</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">units</span><span class="si">}</span><span class="s2">. &quot;</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">text</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;The minimization with </span><span class="si">{</span><span class="n">ff_name</span><span class="si">}</span><span class="s2"> did not converge in &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n_iterations</span><span class="si">}</span><span class="s2"> steps! The final energy was </span><span class="si">{</span><span class="n">energy</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">units</span><span class="si">}</span><span class="s2">. &quot;</span>
+                <span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">text</span> <span class="o">=</span> <span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;The minimization with </span><span class="si">{</span><span class="n">ff_name</span><span class="si">}</span><span class="s2"> did not converge in </span><span class="si">{</span><span class="n">n_iterations</span><span class="si">}</span><span class="s2"> &quot;</span>
-                <span class="sa">f</span><span class="s2">&quot;steps! The final energy was </span><span class="si">{</span><span class="n">energy</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">units</span><span class="si">}</span><span class="s2">. &quot;</span>
-            <span class="p">)</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Calculated the energy and gradients using </span><span class="si">{</span><span class="n">ff_name</span><span class="si">}</span><span class="s2">&quot;</span>
+
+        <span class="c1"># Put any requested results into variables or tables</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">store_results</span><span class="p">(</span>
+            <span class="n">configuration</span><span class="o">=</span><span class="n">configuration</span><span class="p">,</span>
+            <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span>
+        <span class="p">)</span>
 
         <span class="c1"># Save the structure</span>
         <span class="n">system</span><span class="p">,</span> <span class="n">configuration</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_system_configuration</span><span class="p">(</span><span class="n">P</span><span class="p">)</span>
@@ -957,12 +1013,6 @@ document.write(`
                 <span class="n">note</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;The main </span><span class="si">{</span><span class="n">ff_name</span><span class="si">}</span><span class="s2"> citation.&quot;</span><span class="p">,</span>
             <span class="p">)</span>
 
-        <span class="c1"># Put any requested results into variables or tables</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">store_results</span><span class="p">(</span>
-            <span class="n">configuration</span><span class="o">=</span><span class="n">configuration</span><span class="p">,</span>
-            <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span>
-        <span class="p">)</span>
-
         <span class="c1"># Add other citations here or in the appropriate place in the code.</span>
         <span class="c1"># Add the bibtex to data/references.bib, and add a self.reference.cite</span>
         <span class="c1"># similar to the above to actually add the citation to the references.</span>
@@ -979,7 +1029,7 @@ document.write(`
               
               
                 <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                  
 <div class="prev-next-area">
 </div>
                 </footer>
@@ -987,6 +1037,8 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"></div>
               
             
           </div>
@@ -999,8 +1051,8 @@ document.write(`
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -1050,8 +1102,9 @@ document.write(`
   
     <div class="footer-items__end">
       
-        <div class="footer-item"><p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.3.
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
 </p></div>
       
     </div>

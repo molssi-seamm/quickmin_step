@@ -66,11 +66,27 @@ units : str
     Optional units for the result. If present, the value should be in these units.
 """
 metadata["results"] = {
-    "total energy": {
+    "energy": {
         "description": "The total energy",
         "dimensionality": "scalar",
         "property": "total energy#QuickMin#{model}",
         "type": "float",
         "units": "kJ/mol",
+    },
+    "gradients": {
+        "description": "The gradients",
+        "dimensionality": "[3, n_atoms]",
+        "type": "float",
+        "units": "kJ/mol/Å",
+    },
+    "forcefield": {
+        "description": "The forcefield used",
+        "dimensionality": "scalar",
+        "type": "string",
+    },
+    "model": {
+        "description": "The model string",
+        "dimensionality": "scalar",
+        "type": "string",
     },
 }

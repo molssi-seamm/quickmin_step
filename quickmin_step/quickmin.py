@@ -9,6 +9,7 @@ import threading
 import time
 
 import logging
+import numpy as np
 from pathlib import Path
 import pkg_resources
 import pprint  # noqa: F401
@@ -212,6 +213,7 @@ class QuickMin(seamm.Node):
         if P is None:
             P = self.parameters.values_to_dict()
 
+        calculation = P["calculation"]
         n_steps = P["n_steps"]
         forcefield = P["forcefield"]
         if forcefield == "best available":
@@ -219,14 +221,19 @@ class QuickMin(seamm.Node):
         else:
             ff_name = forcefield.split()[0]
 
-        text = f"Minimizing the structure with {ff_name}, with a maximum of "
-        text += f"{n_steps} steps."
+        if calculation == "optimization":
+            text = f"Minimizing the structure with {ff_name}, with a maximum of "
+            text += f"{n_steps} steps."
 
-        if P["forcefield"] == "best available":
-            kwargs = {}
+            if P["forcefield"] == "best available":
+                kwargs = {}
+            else:
+                kwargs = {"forcefield": ff_name}
+            text += seamm.standard_parameters.structure_handling_description(
+                P, **kwargs
+            )
         else:
-            kwargs = {"forcefield": ff_name}
-        text += seamm.standard_parameters.structure_handling_description(P, **kwargs)
+            text = f"Performing a quick energy calculation with {ff_name}."
 
         return self.header + "\n" + __(text, indent=4 * " ").__str__()
 
@@ -249,6 +256,7 @@ class QuickMin(seamm.Node):
         P = self.parameters.current_values_to_dict(
             context=seamm.flowchart_variables._data
         )
+        calculation = P["calculation"]
 
         # Print what we are doing
         printer.important(__(self.description_text(P)))
@@ -326,6 +334,7 @@ class QuickMin(seamm.Node):
 
         obmol = configuration.to_OBMol()
 
+        gradients = []
         if P["forcefield"] == "best available":
             for ff_name in ("GAFF", "MMFF94s", "Ghemical", "UFF"):
                 obFF = openbabel.OBForceField.FindForceField(ff_name)
@@ -345,12 +354,29 @@ class QuickMin(seamm.Node):
                                 "Could not find a forcefield for the molecule"
                             )
                         continue
-                    obFF.ConjugateGradients(P["n_steps"])
+                    if calculation == "optimization":
+                        obFF.ConjugateGradients(P["n_steps"])
 
-                    energy = obFF.Energy(False)
+                    energy = obFF.Energy(True)
                     units = obFF.GetUnit()
 
-                path = Path(self.directory) / "min.out"
+                    # Capture the gradients
+                    factor = Q_(1.0, units).m_as("kJ/mol")
+                    for atom in openbabel.OBMolAtomIter(obmol):
+                        # vector objects have to be de-referenced individually (sigh)
+                        grad = obFF.GetGradient(atom)
+                        gradients.append(
+                            [
+                                factor * grad.GetX(),
+                                factor * grad.GetY(),
+                                factor * grad.GetZ(),
+                            ]
+                        )
+
+                if calculation == "optimization":
+                    path = Path(self.directory) / "min.out"
+                else:
+                    path = Path(self.directory) / "energy.out"
                 path.write_text(out.capturedtext)
                 break
         else:
@@ -369,13 +395,30 @@ class QuickMin(seamm.Node):
                     raise RuntimeError(
                         f"Could not assign forcefield {ff_name} to the molecule"
                     )
-                obFF.ConjugateGradients(P["n_steps"])
-                obFF.GetCoordinates(obmol)
+                if calculation == "optimization":
+                    obFF.ConjugateGradients(P["n_steps"])
+                    obFF.GetCoordinates(obmol)
 
-                energy = obFF.Energy(False)
+                energy = obFF.Energy(True)
                 units = obFF.GetUnit()
 
-            path = Path(self.directory) / "min.out"
+                # Capture the gradients
+                factor = Q_(1.0, units).m_as("kJ/mol")
+                for atom in openbabel.OBMolAtomIter(obmol):
+                    # vector objects have to be de-referenced individually (sigh)
+                    grad = obFF.GetGradient(atom)
+                    gradients.append(
+                        [
+                            factor * grad.GetX(),
+                            factor * grad.GetY(),
+                            factor * grad.GetZ(),
+                        ]
+                    )
+
+            if calculation == "optimization":
+                path = Path(self.directory) / "min.out"
+            else:
+                path = Path(self.directory) / "energy.out"
             path.write_text(out.capturedtext)
 
         # Set the model chemistry to the forcefield name.
@@ -393,20 +436,34 @@ class QuickMin(seamm.Node):
         # Set up the results data
         data = {}
         if units == "kJ/mol":
-            data["total energy"] = energy
+            data["energy"] = energy
+            data["gradients"] = gradients
         else:
-            data["total energy"] = Q_(energy, units).m_as("kJ/mol")
+            data["energy"] = Q_(energy, units).m_as("kJ/mol")
+            tmp = np.array(gradients) * Q_(1.0, units).m_as("kJ/mol")
+            data["gradients"] = tmp.tolist()
+        data["forcefield"] = ff_name
+        data["model"] = self.model
 
-        if converged:
-            text = (
-                f"The minimization using {ff_name} converged in {n_iterations} steps "
-                f"to {energy:.3f} {units}. "
-            )
+        if calculation == "optimization":
+            if converged:
+                text = (
+                    f"The minimization using {ff_name} converged in {n_iterations} "
+                    f"steps to {energy:.3f} {units}. "
+                )
+            else:
+                text = (
+                    f"The minimization with {ff_name} did not converge in "
+                    f"{n_iterations} steps! The final energy was {energy:.3f} {units}. "
+                )
         else:
-            text = (
-                f"The minimization with {ff_name} did not converge in {n_iterations} "
-                f"steps! The final energy was {energy:.3f} {units}. "
-            )
+            text = f"Calculated the energy and gradients using {ff_name}"
+
+        # Put any requested results into variables or tables
+        self.store_results(
+            configuration=configuration,
+            data=data,
+        )
 
         # Save the structure
         system, configuration = self.get_system_configuration(P)
@@ -454,12 +511,6 @@ class QuickMin(seamm.Node):
                 level=1,
                 note=f"The main {ff_name} citation.",
             )
-
-        # Put any requested results into variables or tables
-        self.store_results(
-            configuration=configuration,
-            data=data,
-        )
 
         # Add other citations here or in the appropriate place in the code.
         # Add the bibtex to data/references.bib, and add a self.reference.cite

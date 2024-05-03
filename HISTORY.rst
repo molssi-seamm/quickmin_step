@@ -1,6 +1,12 @@
 =======
 History
 =======
+2024.5.3 -- Added single point energy and Results.json
+    * Added control to allow a single point energy as well as optimization. This
+      supports using QuickMin with e.g energy scans.
+    * Standardized the name of the energy to simply "energy" to better support other
+      plug-ins and codes understanding the results.
+      
 2023.11.15 -- Bugfix: structure handling
     Error putting the coordinates into a newly created configuration.
     

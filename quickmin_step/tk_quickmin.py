@@ -131,6 +131,9 @@ class TkQuickMin(seamm.TkNode):
             ):
                 self[key] = P[key].widget(frame)
 
+        # and binding to change as needed
+        self["calculation"].combobox.bind("<<ComboboxSelected>>", self.reset_dialog)
+
         # and lay them out
         self.reset_dialog()
 
@@ -163,20 +166,19 @@ class TkQuickMin(seamm.TkNode):
         for slave in frame.grid_slaves():
             slave.grid_forget()
 
-        # Shortcut for parameters
-        P = self.node.parameters
-
         # keep track of the row in a variable, so that the layout is flexible
-        # if e.g. rows are skipped to control such as "method" here
+        # if e.g. rows are skipped to control such as "calculation" here
+        calculation = self["calculation"].get()
+
         row = 0
         widgets = []
-        for key in P:
-            if key[0] != "_" and key not in (
-                "results",
-                "extra keywords",
-                "create tables",
-                "subsequent structure handling",
-            ):
+        for key in ("forcefield", "calculation"):
+            self[key].grid(row=row, column=0, sticky=tk.EW)
+            widgets.append(self[key])
+            row += 1
+
+        if calculation == "optimization":
+            for key in ("n_steps",):
                 self[key].grid(row=row, column=0, sticky=tk.EW)
                 widgets.append(self[key])
                 row += 1

@@ -360,8 +360,8 @@ class QuickMin(seamm.Node):
                     energy = obFF.Energy(True)
                     units = obFF.GetUnit()
 
-                    # Capture the gradients
-                    factor = Q_(1.0, units).m_as("kJ/mol")
+                    # Capture the gradients. These appear to be forces, so negate
+                    factor = -Q_(1.0, units).m_as("kJ/mol")
                     for atom in openbabel.OBMolAtomIter(obmol):
                         # vector objects have to be de-referenced individually (sigh)
                         grad = obFF.GetGradient(atom)
@@ -402,8 +402,8 @@ class QuickMin(seamm.Node):
                 energy = obFF.Energy(True)
                 units = obFF.GetUnit()
 
-                # Capture the gradients
-                factor = Q_(1.0, units).m_as("kJ/mol")
+                # Capture the gradients. These appear to be forces, so negate
+                factor = -Q_(1.0, units).m_as("kJ/mol")
                 for atom in openbabel.OBMolAtomIter(obmol):
                     # vector objects have to be de-referenced individually (sigh)
                     grad = obFF.GetGradient(atom)

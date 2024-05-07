@@ -1,6 +1,10 @@
 =======
 History
 =======
+2024.5.7 -- Bugfix: Corrected sign on gradients.
+    * OpenBabel calls "forces" "gradients", so needed to take the negative to get the
+      actual gradients.
+      
 2024.5.3 -- Added single point energy and Results.json
     * Added control to allow a single point energy as well as optimization. This
       supports using QuickMin with e.g energy scans.

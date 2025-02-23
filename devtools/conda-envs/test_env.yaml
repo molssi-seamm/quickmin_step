@@ -13,6 +13,7 @@ dependencies:
   - seamm
   - seamm-util
   - seamm-widgets
+  - tabulate
 
   # Testing
   - black

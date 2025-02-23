@@ -1,6 +1,11 @@
 =======
 History
 =======
+2025.2.23 -- Add RMSD and other properties to the output and available results.
+    * Calculate the RMSD between the initial and final structures, and made it available
+      in the results and also reported to the output.
+    * Added control over where to place the optimized structure.
+
 2024.5.7 -- Bugfix: Corrected sign on gradients.
     * OpenBabel calls "forces" "gradients", so needed to take the negative to get the
       actual gradients.

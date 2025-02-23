@@ -1,4 +1,5 @@
+numpy
 seamm
 seamm-util
 seamm-widgets
-numpy
+tabulate

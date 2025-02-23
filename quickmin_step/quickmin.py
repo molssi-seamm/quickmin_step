@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 
-"""Non-graphical part of the QuickMin step in a SEAMM flowchart
-"""
+"""Non-graphical part of the QuickMin step in a SEAMM flowchart"""
 
 import os
 import sys
+import textwrap
 import threading
 import time
 
@@ -16,6 +16,7 @@ import pprint  # noqa: F401
 import shutil
 import string
 import subprocess
+from tabulate import tabulate
 
 from openbabel import openbabel
 
@@ -223,7 +224,7 @@ class QuickMin(seamm.Node):
 
         if calculation == "optimization":
             text = f"Minimizing the structure with {ff_name}, with a maximum of "
-            text += f"{n_steps} steps."
+            text += f"{n_steps} steps. "
 
             if P["forcefield"] == "best available":
                 kwargs = {}
@@ -333,6 +334,7 @@ class QuickMin(seamm.Node):
         system, configuration = self.get_system_configuration(None)
 
         obmol = configuration.to_OBMol()
+        initial_OBMol = configuration.to_OBMol()
 
         gradients = []
         if P["forcefield"] == "best available":
@@ -356,6 +358,7 @@ class QuickMin(seamm.Node):
                         continue
                     if calculation == "optimization":
                         obFF.ConjugateGradients(P["n_steps"])
+                        obFF.GetCoordinates(obmol)
 
                     energy = obFF.Energy(True)
                     units = obFF.GetUnit()
@@ -435,6 +438,8 @@ class QuickMin(seamm.Node):
 
         # Set up the results data
         data = {}
+        data["converged"] = converged
+        data["n steps"] = n_iterations
         if units == "kJ/mol":
             data["energy"] = energy
             data["gradients"] = gradients
@@ -446,6 +451,27 @@ class QuickMin(seamm.Node):
         data["model"] = self.model
 
         if calculation == "optimization":
+            table = {
+                "Property": [],
+                "Value": [],
+                "Units": [],
+            }
+            table["Property"].append("Energy")
+            table["Value"].append(f"{energy:.3f}")
+            table["Units"].append(units)
+
+            table["Property"].append("Steps")
+            table["Value"].append(n_iterations)
+            table["Units"].append("")
+
+            table["Property"].append("Converged")
+            table["Value"].append(str(converged))
+            table["Units"].append("")
+
+            table["Property"].append("Forcefield")
+            table["Value"].append(data["forcefield"])
+            table["Units"].append("")
+
             if converged:
                 text = (
                     f"The minimization using {ff_name} converged in {n_iterations} "
@@ -456,8 +482,64 @@ class QuickMin(seamm.Node):
                     f"The minimization with {ff_name} did not converge in "
                     f"{n_iterations} steps! The final energy was {energy:.3f} {units}. "
                 )
+
+            result = molsystem.RMSD(obmol, initial_OBMol, symmetry=True, align=True)
+            data["RMSD"] = result["RMSD"]
+            data["displaced atom"] = result["displaced atom"]
+            data["maximum displacement"] = result["maximum displacement"]
+
+            # Save the structure
+            if P["structure handling"] != "Ignore":
+                system, configuration = self.get_system_configuration(P)
+                configuration.coordinates_from_OBMol(obmol)
+
+            result = molsystem.RMSD(obmol, initial_OBMol, symmetry=True, include_h=True)
+            data["RMSD with H"] = result["RMSD"]
+            data["displaced atom with H"] = result["displaced atom"]
+            data["maximum displacement with H"] = result["maximum displacement"]
+
+            if "RMSD" in data:
+                tmp = data["RMSD"]
+                table["Property"].append("RMSD in Geometry")
+                table["Value"].append(f"{tmp:.2f}")
+                table["Units"].append("Å")
+
+            if "maximum displacement" in data:
+                tmp = data["maximum displacement"]
+                table["Property"].append("Largest Displacement")
+                table["Value"].append(f"{tmp:.2f}")
+                table["Units"].append("Å")
+
+            if "displaced atom" in data:
+                tmp = data["displaced atom"]
+                table["Property"].append("Displaced Atom")
+                table["Value"].append(f"{tmp + 1}")
+                table["Units"].append("")
+
+            text_lines = []
+            text_lines.append("                     Results")
+            text_lines.append(
+                tabulate(
+                    table,
+                    headers="keys",
+                    tablefmt="psql",
+                    colalign=("center", "decimal", "left"),
+                )
+            )
+            text_lines.append("\n\n")
+
+            printer.normal(__(text, indent=4 * " "))
+
+            text = "\n\n"
+            text += textwrap.indent("\n".join(text_lines), 12 * " ")
+            printer.normal(text)
+
+            text = seamm.standard_parameters.set_names(
+                system, configuration, P, _first=True, forcefield=ff_name
+            )
         else:
-            text = f"Calculated the energy and gradients using {ff_name}"
+            text = f"Calculated the energy and gradients using {ff_name}. The energy "
+            text += f"was {energy:.3f} {units}."
 
         # Put any requested results into variables or tables
         self.store_results(
@@ -465,14 +547,6 @@ class QuickMin(seamm.Node):
             data=data,
         )
 
-        # Save the structure
-        system, configuration = self.get_system_configuration(P)
-
-        configuration.coordinates_from_OBMol(obmol)
-
-        text += seamm.standard_parameters.set_names(
-            system, configuration, P, _first=True, forcefield=ff_name
-        )
         printer.normal(__(text, indent=4 * " "))
         printer.normal("")
 

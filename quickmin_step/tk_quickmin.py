@@ -183,6 +183,11 @@ class TkQuickMin(seamm.TkNode):
                 widgets.append(self[key])
                 row += 1
 
+            for key in ("structure handling", "system name", "configuration name"):
+                self[key].grid(row=row, column=0, columnspan=2, sticky=tk.EW)
+                widgets.append(self[key])
+                row += 1
+
         # Align the labels
         sw.align_labels(widgets, sticky=tk.E)
 

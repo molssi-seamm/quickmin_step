@@ -1,5 +1,4 @@
-"""This file contains metadata describing the results from QuickMin
-"""
+"""This file contains metadata describing the results from QuickMin"""
 
 metadata = {}
 
@@ -88,5 +87,55 @@ metadata["results"] = {
         "description": "The model string",
         "dimensionality": "scalar",
         "type": "string",
+    },
+    "n steps": {
+        "description": "The number of optimization steps",
+        "dimensionality": "scalar",
+        "type": "integer",
+    },
+    "converged": {
+        "description": "Whether the optimization converged",
+        "dimensionality": "scalar",
+        "type": "boolean",
+    },
+    "RMSD": {
+        "calculation": ["optimization"],
+        "description": "RMSD with H removed",
+        "dimensionality": "scalar",
+        "type": "float",
+        "units": "Å",
+    },
+    "displaced atom": {
+        "calculation": ["optimization"],
+        "description": "Atom index with largest displacement",
+        "dimensionality": "scalar",
+        "type": "int",
+    },
+    "maximum displacement": {
+        "calculation": ["optimization"],
+        "description": "Maximum displacement of an atom",
+        "dimensionality": "scalar",
+        "type": "float",
+        "units": "Å",
+    },
+    "RMSD with H": {
+        "calculation": ["optimization"],
+        "description": "RMSD including H atoms",
+        "dimensionality": "scalar",
+        "type": "float",
+        "units": "Å",
+    },
+    "displaced atom with H": {
+        "calculation": ["optimization"],
+        "description": "Atom index with largest displacement, including H",
+        "dimensionality": "scalar",
+        "type": "int",
+    },
+    "maximum displacement with H": {
+        "calculation": ["optimization"],
+        "description": "Maximum displacement of an atom, including H",
+        "dimensionality": "scalar",
+        "type": "float",
+        "units": "Å",
     },
 }

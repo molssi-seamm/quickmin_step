@@ -1,6 +1,8 @@
 =======
 History
 =======
+2025.2.24 -- Changed structure option to "Discard the structure"
+
 2025.2.23 -- Add RMSD and other properties to the output and available results.
     * Calculate the RMSD between the initial and final structures, and made it available
       in the results and also reported to the output.

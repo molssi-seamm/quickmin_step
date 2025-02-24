@@ -489,7 +489,7 @@ class QuickMin(seamm.Node):
             data["maximum displacement"] = result["maximum displacement"]
 
             # Save the structure
-            if P["structure handling"] != "Ignore":
+            if P["structure handling"] != "Discard the structure":
                 system, configuration = self.get_system_configuration(P)
                 configuration.coordinates_from_OBMol(obmol)
 

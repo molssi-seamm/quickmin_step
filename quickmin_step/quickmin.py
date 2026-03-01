@@ -2,6 +2,7 @@
 
 """Non-graphical part of the QuickMin step in a SEAMM flowchart"""
 
+import importlib
 import os
 import sys
 import textwrap
@@ -11,7 +12,6 @@ import time
 import logging
 import numpy as np
 from pathlib import Path
-import pkg_resources
 import pprint  # noqa: F401
 import shutil
 import string
@@ -28,7 +28,7 @@ import seamm_util.printing as printing
 from seamm_util.printing import FormattedText as __
 
 # Add this modules properties to the standard properties
-path = Path(pkg_resources.resource_filename(__name__, "data/"))
+path = importlib.resources.files("quickmin_step") / "data"
 csv_file = path / "properties.csv"
 if path.exists():
     molsystem.add_properties_from_file(csv_file)

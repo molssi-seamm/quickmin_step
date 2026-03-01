@@ -1,6 +1,8 @@
 =======
 History
 =======
+2026.3.1 -- Internal: switching from deprecated library pkg_resources to importlib
+
 2025.2.24 -- Changed structure option to "Discard the structure"
 
 2025.2.23 -- Add RMSD and other properties to the output and available results.
